@@ -191,7 +191,7 @@ class LoginPage extends StatelessWidget {
       stream: bloc.passwordStream,
       builder:(BuildContext context, AsyncSnapshot snapshot){
         return TextButton(
-          onPressed: snapshot.hasData ? (){} : null, 
+          onPressed: snapshot.hasData ? (){_login(bloc,context);} : null, 
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 8.0),
             child: Text('Ingresar'),
@@ -205,6 +205,15 @@ class LoginPage extends StatelessWidget {
         );
       },
     );
+  }
+
+  _login(LoginBloc bloc, BuildContext context ){
+    print('===========');
+    print('Email ${bloc.email}');
+    print('Password: ${bloc.password} ');
+    print('===========');
+
+    Navigator.pushReplacementNamed(context, 'home');
   }
 
 }
